@@ -18,6 +18,7 @@ after_success:
   elif [ "$TRAVIS_TAG" != "" ]; then
     # push Docker image to Docker Hub
     docker login -u="$DOCKER_USERNAME" -p="$DOCKER_PASSWORD"
+    docker tag "sebastianalbers/rpi-gitea:latest" "sebastianalbers/rpi-gitea:${TRAVIS_TAG}"
     docker push "sebastianalbers/rpi-gitea:${TRAVIS_TAG}"
   fi
 
